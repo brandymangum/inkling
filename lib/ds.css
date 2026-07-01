@@ -1,0 +1,201 @@
+/* ============================================================
+   Inkling Design System — Colors & Type
+   Source of truth: Figma "Inkling Design Library" → Foundation
+   ============================================================ */
+
+/* ---------- Fonts ----------
+   Inkling uses SF Pro Display as the default type family across all
+   components and text styles. SF Pro is Apple's system font, rendered
+   natively on macOS/iOS via -apple-system / BlinkMacSystemFont. On
+   non-Apple platforms we fall back to the OS system UI font (Segoe UI
+   on Windows, Roboto on Android/Linux) — these share similar proportions
+   and keep the design coherent without relying on remote font loading.
+*/
+
+:root {
+  /* ---------- PRIMITIVE COLORS ---------- */
+
+  /* Neutrals — the workhorse scale. ~60% of the UI is grey. */
+  --black:           #1D1D21;
+  --grey-dark:       #585C64;   /* primary body text (most-used color, 994×) */
+  --grey-med:        #A4A8AF;   /* muted text, captions, placeholders */
+  --grey-light:      #C6C9CE;   /* borders, dividers */
+  --grey-xlight:     #E8EAEF;   /* subtle dividers, pill fills */
+  --grey-bg:         #F6F7FA;   /* page / panel background */
+  --grey-bg-light:   #FAFBFD;   /* hover / elevated-panel background */
+  --white:           #FFFFFF;
+
+  /* Brand green (primary CTA + logo) — Foundation green scale */
+  --green-brand:     #35BC98;   /* buttons, logo */
+  --green:           #2EB18E;   /* hover */
+  --green-dark:      #26AD89;   /* pressed / deep */
+  --green-light:     #D9F4ED;   /* success background */
+
+  /* Deep teal (marketing / thumbnail dark surfaces) */
+  --teal-deep:       #01303E;
+  --teal-ink:        #04303E;
+
+  /* Purple (secondary accent) */
+  --purple-dark:     #3A2B98;
+  --purple:          #503BD4;
+  --purple-light:    #D8D1FF;
+
+  /* Blue (links / informational) */
+  --blue-dark:       #0A42C4;
+  --blue:            #0D54F5;
+  --blue-light:      #E7EFFC;
+  --blue-bg:         #E7EFFC;
+
+  /* Yellow (warning) */
+  --yellow-dark:     #ECE02A;
+  --yellow:          #F6EA2F;
+  --yellow-light:    #FFFDDB;
+
+  /* Orange */
+  --orange-dark:     #D97A22;
+  --orange:          #FF9A3C;
+  --orange-light:    #FFE8D3;
+
+  /* Red (error / destructive) */
+  --red:             #EB5757;
+  --red-light:       #FBD7D7;
+
+  /* Elevation helpers */
+  --elev-1:          #E9E9E9;
+  --elev-2:          #E9E9E9;
+  --elev-3:          #CECECE;
+
+
+  /* ---------- SEMANTIC TOKENS ---------- */
+  --fg-primary:      var(--black);      /* headings, emphasised body */
+  --fg-body:         var(--grey-dark);  /* default body copy */
+  --fg-muted:        var(--grey-med);   /* captions, helper text */
+  --fg-disabled:     var(--grey-light);
+  --fg-on-dark:      var(--white);
+  --fg-on-brand:     var(--white);
+  --fg-link:         var(--blue);
+
+  --bg-canvas:       var(--grey-bg);
+  --bg-surface:      var(--white);
+  --bg-subtle:       var(--grey-bg-light);
+  --bg-raised:       var(--white);
+  --bg-inverse:      var(--black);
+
+  --border-default:  var(--grey-light);
+  --border-subtle:   var(--grey-xlight);
+  --border-strong:   var(--grey-dark);
+
+  --accent-primary:  var(--green-brand);
+  --accent-primary-hover: var(--green);
+  --accent-secondary: var(--purple);
+
+  --status-success:  var(--green);
+  --status-success-bg: var(--green-light);
+  --status-warning:  var(--yellow);
+  --status-warning-bg: var(--yellow-light);
+  --status-danger:   var(--red);
+  --status-danger-bg: var(--red-light);
+  --status-info:     var(--blue);
+  --status-info-bg:  var(--blue-bg);
+
+
+  /* ---------- TYPOGRAPHY ---------- */
+  /* SF Pro Display everywhere, falling back to the OS system UI font. */
+  --font-ui: "SF Pro Display", -apple-system, BlinkMacSystemFont,
+             "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-ui);
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco,
+               Consolas, "Liberation Mono", "Courier New", monospace;
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  /* Type scale (matches Foundation/Typography exactly) */
+  --type-h1-size: 32px;       --type-h1-weight: 400; --type-h1-lh: 100%;
+  --type-h2-size: 28px;       --type-h2-weight: 700; --type-h2-lh: 100%;
+  --type-h3-size: 22px;       --type-h3-weight: 700; --type-h3-lh: 100%;
+  --type-h4-size: 16px;       --type-h4-weight: 700; --type-h4-lh: 100%;
+  --type-headline-size: 14px; --type-headline-weight: 700; --type-headline-lh: 100%;
+  --type-body-size: 16px;     --type-body-weight: 600; --type-body-lh: 100%;
+  --type-paragraph-size: 14px;--type-paragraph-weight: 400; --type-paragraph-lh: 20px;
+  --type-body-med-size: 14px; --type-body-med-weight: 500;
+  --type-body-sb-size: 14px;  --type-body-sb-weight: 600;
+  --type-label-size: 12px;    --type-label-weight: 400;
+  --type-label-sb-size: 12px; --type-label-sb-weight: 600;
+  --type-caption-size: 10px;  --type-caption-weight: 400; --type-caption-lh: 14px;
+  --type-caption-sb-size: 10px;--type-caption-sb-weight: 600;
+
+
+  /* ---------- SPACING ---------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+
+  /* ---------- RADII ---------- */
+  --radius-sm: 4px;   /* buttons, inputs, cards */
+  --radius-md: 5px;   /* library wrappers */
+  --radius-lg: 8px;   /* agent message bubbles, toasts */
+  --radius-pill: 64px;/* alert pills */
+
+
+  /* ---------- SHADOWS / ELEVATION ---------- */
+  --shadow-1: 1px 2px 3px 0 rgba(233,233,233,1);           /* buttons, citations */
+  --shadow-2: 0 2px 8px 0 rgba(0,0,0,0.04),
+              0 1px 3px 0 rgba(0,0,0,0.06);                /* cards */
+  --shadow-3: 0 8px 24px 0 rgba(0,0,0,0.08),
+              0 2px 6px 0 rgba(0,0,0,0.06);                /* menus, modals */
+}
+
+
+/* ---------- ELEMENT DEFAULTS ---------- */
+html, body {
+  font-family: var(--font-ui);
+  font-size: 14px;
+  color: var(--fg-body);
+  background: var(--bg-canvas);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1 {
+  font: var(--fw-regular) var(--type-h1-size)/var(--type-h1-lh) var(--font-ui);
+  color: var(--fg-primary); margin: 0;
+}
+h2 {
+  font: var(--fw-bold) var(--type-h2-size)/var(--type-h2-lh) var(--font-ui);
+  color: var(--fg-primary); margin: 0;
+}
+h3 {
+  font: var(--fw-bold) var(--type-h3-size)/var(--type-h3-lh) var(--font-ui);
+  color: var(--fg-primary); margin: 0;
+}
+h4 {
+  font: var(--fw-bold) var(--type-h4-size)/var(--type-h4-lh) var(--font-ui);
+  color: var(--fg-primary); margin: 0;
+}
+p {
+  font: var(--fw-regular) var(--type-paragraph-size)/var(--type-paragraph-lh) var(--font-ui);
+  color: var(--fg-body); margin: 0 0 12px 0;
+}
+small, .caption {
+  font: var(--fw-regular) var(--type-caption-size)/var(--type-caption-lh) var(--font-ui);
+  color: var(--fg-muted);
+}
+code, pre { font-family: var(--font-mono); }
+a { color: var(--fg-link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.headline { font-weight: 700; font-size: 14px; line-height: 100%; }
+.label    { font-weight: 400; font-size: 12px; }
+.label-sb { font-weight: 600; font-size: 12px; }
+.caption-sb { font-weight: 600; font-size: 10px; line-height: 14px; }
