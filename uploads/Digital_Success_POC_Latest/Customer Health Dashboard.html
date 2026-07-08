@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customer Health — Vela</title>
+  <link rel="stylesheet" href="lib/ds.css?v=inkling18" />
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; height: 100%; background: var(--bg-canvas); }
+    #root { height: 100%; }
+    ::-webkit-scrollbar { width: 11px; height: 11px; }
+    ::-webkit-scrollbar-thumb { background: #C6C9CE; border-radius: 6px; border: 3px solid var(--bg-canvas); }
+    ::-webkit-scrollbar-thumb:hover { background: #A4A8AF; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    @keyframes slideIn { from { transform: translateX(24px); opacity: 0.4; } to { transform: translateX(0); opacity: 1; } }
+    @keyframes confettiFall { to { transform: translateY(105vh) rotate(540deg); opacity: 0.9; } }
+    @keyframes cheerPop { 0% { transform: translate(-50%,-50%) scale(0.4); opacity: 0; } 18% { transform: translate(-50%,-50%) scale(1.08); opacity: 1; } 80% { opacity: 1; } 100% { transform: translate(-50%,-50%) scale(1); opacity: 0; } }
+    @keyframes cheerDance { 0%,100% { transform: rotate(-12deg) translateY(0); } 50% { transform: rotate(12deg) translateY(-8px); } }
+    @keyframes ccmarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @media (prefers-reduced-motion: reduce) { [style*="ccmarquee"] { animation: none !important; } }
+    button:focus-visible { outline: 2px solid var(--green-brand); outline-offset: 1px; }
+    table { font-variant-numeric: tabular-nums; }
+  </style>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<link id="gfont-Quicksand" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap">
+<link id="gfont-Fira-Sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&amp;display=swap">
+<link id="gfont-Abril-Fatface" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Abril+Fatface:wght@300;400;500;600;700&amp;display=swap">
+</head>
+<body style="background-color: #F0EFEC; font-family: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;">
+  <div id="root"><div style="position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:#F0EFEC;font-family:'Hanken Grotesk',-apple-system,BlinkMacSystemFont,sans-serif;"><svg width="40" height="36" viewBox="0 0 72 64" fill="none"><path d="M 8 40 C 14 24 20 24 24 34 C 27 41 31 41 34 32 C 37 24 43 24 46 32" stroke="#141414" stroke-width="4" stroke-linecap="round" fill="none"/><circle cx="58" cy="34" r="6" fill="#C75A2E"><animate attributeName="opacity" values="1;0.35;1" dur="1.4s" repeatCount="indefinite"/></circle></svg><span style="font-size:13px;color:#85816F;">Loading your book…</span></div></div>
+  <script src="lib/data.js?v=inkling18"></script>
+  <script src="lib/sync.js?v=inkling18"></script>
+  <script src="lib/playbooks.js?v=inkling18"></script>
+  <script type="text/babel" src="lib/components.jsx?v=inkling18"></script>
+  <script type="text/babel" src="lib/charts.jsx?v=inkling18"></script>
+  <script type="text/babel" src="lib/alerts.jsx?v=inkling18"></script>
+  <script type="text/babel" src="lib/dashboard.jsx?v=inkling18"></script>
+  <script type="text/babel" src="lib/detail.jsx?v=inkling18"></script>
+  <script type="text/babel" src="lib/playbooks.jsx?v=inkling18"></script>
+  <script type="text/babel" src="lib/accounts.jsx?v=inkling18"></script>
+  <script type="text/babel" src="lib/notes.jsx?v=inkling18"></script>
+  <script type="text/babel" src="lib/triggers.jsx?v=inkling18"></script>
+  <script type="text/babel" src="lib/buildplan.jsx?v=inkling18"></script>
+  <script type="text/babel" src="lib/tweaks-panel.jsx?v=inkling18"></script>
+  <script src="lib/easter.js?v=inkling18"></script>
+  <script type="text/babel" src="lib/app.jsx?v=inkling18"></script>
+</body>
+</html>
