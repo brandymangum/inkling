@@ -1,10 +1,10 @@
 /* ============================================================
-   Inkling Design System — Colors & Type
-   Source of truth: Figma "Inkling Design Library" → Foundation
+   Vela Design System — Colors & Type
+   Source of truth: Figma "Vela Design Library" → Foundation
    ============================================================ */
 
 /* ---------- Fonts ----------
-   Inkling uses SF Pro Display as the default type family across all
+   Vela uses SF Pro Display as the default type family across all
    components and text styles. SF Pro is Apple's system font, rendered
    natively on macOS/iOS via -apple-system / BlinkMacSystemFont. On
    non-Apple platforms we fall back to the OS system UI font (Segoe UI
@@ -16,20 +16,20 @@
   /* ---------- PRIMITIVE COLORS ---------- */
 
   /* Neutrals — the workhorse scale. ~60% of the UI is grey. */
-  --black:           #1D1D21;
-  --grey-dark:       #585C64;   /* primary body text (most-used color, 994×) */
-  --grey-med:        #A4A8AF;   /* muted text, captions, placeholders */
-  --grey-light:      #C6C9CE;   /* borders, dividers */
-  --grey-xlight:     #E8EAEF;   /* subtle dividers, pill fills */
-  --grey-bg:         #F6F7FA;   /* page / panel background */
-  --grey-bg-light:   #FAFBFD;   /* hover / elevated-panel background */
+  --black:           #141414;
+  --grey-dark:       #55534C;   /* primary body text (most-used color, 994×) */
+  --grey-med:        #85816F;   /* muted text, captions, placeholders */
+  --grey-light:      #D8D3C7;   /* borders, dividers */
+  --grey-xlight:     #E3E0D8;   /* subtle dividers, pill fills */
+  --grey-bg:         #F0EFEC;   /* page / panel background */
+  --grey-bg-light:   #FAF8F4;   /* hover / elevated-panel background */
   --white:           #FFFFFF;
 
   /* Brand green (primary CTA + logo) — Foundation green scale */
-  --green-brand:     #35BC98;   /* buttons, logo */
-  --green:           #2EB18E;   /* hover */
-  --green-dark:      #26AD89;   /* pressed / deep */
-  --green-light:     #D9F4ED;   /* success background */
+  --green-brand:     #141414;   /* primary buttons (ink) */
+  --green:           #2A2A2A;   /* hover */
+  --green-dark:      #5F7D5A;   /* healthy/positive */
+  --green-light:     #E8EFE4;   /* success background */
 
   /* Deep teal (marketing / thumbnail dark surfaces) */
   --teal-deep:       #01303E;
@@ -101,7 +101,7 @@
 
   /* ---------- TYPOGRAPHY ---------- */
   /* SF Pro Display everywhere, falling back to the OS system UI font. */
-  --font-ui: "SF Pro Display", -apple-system, BlinkMacSystemFont,
+  --font-ui: "Hanken Grotesk", -apple-system, BlinkMacSystemFont,
              "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-display: var(--font-ui);
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco,

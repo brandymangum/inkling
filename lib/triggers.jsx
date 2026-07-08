@@ -14,11 +14,11 @@ function RuleRow({ tone, label, rule }) {
 
 function TriggerCard({ num, name, status, statusTone, watch, rules, dataSource, note }) {
   return (
-    <div style={{ border: `1px solid ${V.greyXLight}`, borderRadius: 8, overflow: 'hidden', background: '#fff', boxShadow: V.shadow2 }}>
+    <div style={{ border: `1px solid ${V.greyXLight}`, borderRadius: 8, overflow: 'hidden', background: V.white, boxShadow: V.shadow2 }}>
       <div style={{ padding: '16px 18px', borderBottom: `1px solid ${V.greyXLight}`, display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12 }}>
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
-            <span style={{ fontSize: 12, fontWeight: 700, color: '#fff', background: V.black, padding: '3px 9px', borderRadius: 4 }}>Trigger {num}</span>
+            <span style={{ fontSize: 12, fontWeight: 700, color: V.onAccent, background: V.inkBar, padding: '3px 9px', borderRadius: 4 }}>Trigger {num}</span>
             <h3 style={{ fontSize: 17, fontWeight: 700, color: V.black, margin: 0 }}>{name}</h3>
           </div>
           <div style={{ fontSize: 13, color: V.greyDark }}><span style={{ fontWeight: 600, color: V.black }}>Watching:</span> {watch}</div>
@@ -40,14 +40,14 @@ function TriggerCard({ num, name, status, statusTone, watch, rules, dataSource, 
 
 function Triggers() {
   const valid = [
-    ['Would have caught Cobalt Studio\u2019s February dip (\u221230%)', 'green'],
-    ['Would have caught Riverstone Digital\u2019s multi-month decline', 'green'],
-    ['Would have caught Kingfisher Networks early \u2014 before it reached a 90% drop', 'green'],
-    ['No false positives for growing accounts (Lakeside Labs, Kestrel Solutions)', 'green'],
+    ['Would have caught Oakmont Solutions’ May drop (\u221235%)', 'green'],
+    ['Would have caught Everline Systems’ multi-month decline', 'green'],
+    ['Would have caught Union Square Co early \u2014 before it reached a 90% drop', 'green'],
+    ['No false positives for growing accounts (Apex Retail Group, Lakeside Group)', 'green'],
   ];
   return (
     <main style={{ flex: 1, display: 'flex', flexDirection: 'column', background: 'transparent', overflow: 'hidden', minWidth: 0 }}>
-      <header style={{ padding: '18px 32px 16px', background: '#fff', borderBottom: `1px solid ${V.greyXLight}`, flexShrink: 0 }}>
+      <header style={{ padding: '18px 32px 16px', background: V.white, borderBottom: `1px solid ${V.greyXLight}`, flexShrink: 0 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10, fontSize: 12, color: V.greyMed }}>
           <span>Digital CS POC</span><Icon name="chevronRight" size={12} color={V.greyLight} /><span style={{ color: V.greyDark }}>Triggers &amp; Thresholds</span>
         </div>
@@ -58,7 +58,7 @@ function Triggers() {
           </div>
           <div style={{ display: 'flex', gap: 8 }}>
             <Chip tone="grey" icon="target">30% MoM</Chip>
-            <Chip tone="orange" icon="info">Proposed · pending Reese</Chip>
+            <Chip tone="blue" icon="check2">Confirmed · validating vs. real data</Chip>
           </div>
         </div>
       </header>
@@ -67,31 +67,31 @@ function Triggers() {
         <div style={{ maxWidth: 920, display: 'flex', flexDirection: 'column', gap: 22 }}>
 
           <TriggerCard
-            num={1} name="Usage Activity" status="Confirmed w/ Jordan" statusTone="green"
-            watch="Monthly monthly-active-user volume per customer."
+            num={1} name="Product Usage" status="Confirmed" statusTone="green"
+            watch="Monthly logins / active sessions per account."
             rules={[
               { tone: 'red', label: 'Decline', rule: 'Current month is 30% or more below the previous month — early-warning alert.' },
-              { tone: 'red', label: 'Stall', rule: 'Zero usage activity for 30 or more consecutive days — urgent alert.' },
+              { tone: 'red', label: 'Stall', rule: 'Zero usage for 30 or more consecutive days — urgent alert.' },
               { tone: 'purple', label: 'Upsell', rule: 'Current month is 30% or more above the previous month — expansion signal.' },
-              { tone: 'orange', label: 'Cumulative', rule: 'Down 30% or more from the highest point in the last 3 months — catches slow slides (the Kingfisher Networks case) that never trip a single-month alert.' },
+              { tone: 'orange', label: 'Cumulative', rule: 'Down 30% or more from the highest point in the last 3 months — catches slow slides (the Union Square Co case) that never trip a single-month alert.' },
             ]}
-            dataSource="usage_events · event_at, is_success, organization"
-            note="Cumulative-decline rule added after Kingfisher Networks slid from 128 to 12 without any single month crossing 30%."
+            dataSource="product_events · session_started_at, user_id, account"
+            note="Cumulative-decline rule added after Union Square Co slid from 110 to 9 without any single month crossing 30%."
           />
 
           <TriggerCard
-            num={2} name="Login Activity & Usage" status="Direction confirmed · source TBD" statusTone="orange"
-            watch="Login events and unique users logging in per customer, weekly or monthly."
+            num={2} name="Active-User / Seat Adoption" status="Direction confirmed · source TBD" statusTone="orange"
+            watch="Monthly active users per account, and active users vs. contracted seats."
             rules={[
-              { tone: 'red', label: 'Decline', rule: 'Current month login activity is 30% or more below the previous month.' },
-              { tone: 'purple', label: 'Upsell', rule: 'Current month login activity is 30% or more above the previous month.' },
+              { tone: 'red', label: 'Decline', rule: 'Current month active users are 30% or more below the previous month.' },
+              { tone: 'purple', label: 'Upsell', rule: 'Current month active users are 30% or more above the previous month.' },
             ]}
-            dataSource="TBD — pending eng confirmation of where login-event data lives in the stack"
-            note="Jordan flagged that seat-count-vs-contracted was the original Trigger 2, but contracted amounts can be annual or life-of-contract — a customer early in their contract can look underutilized while perfectly on track. Login activity is a more reliable behavioral signal because it doesn't depend on contract timing."
+            dataSource="TBD — pending eng confirmation of where login/auth events live in the stack"
+            note="An earlier draft used seat-utilization as Trigger 2, but contracted amounts can be annual or life-of-contract — a customer early in their contract can look underutilized while perfectly on track. Active-user volume is a more reliable behavioral signal because it doesn't depend on contract timing."
           />
 
           {/* exclusions */}
-          <div style={{ border: `1px solid ${V.greyXLight}`, borderRadius: 8, padding: '16px 18px', background: '#fff', boxShadow: V.shadow2 }}>
+          <div style={{ border: `1px solid ${V.greyXLight}`, borderRadius: 8, padding: '16px 18px', background: V.white, boxShadow: V.shadow2 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 9, marginBottom: 8 }}>
               <Icon name="shield" size={16} color={V.greyDark} strokeWidth={1.9} />
               <h3 style={{ fontSize: 15, fontWeight: 700, color: V.black, margin: 0 }}>Exclusions &amp; maturity rule</h3>
@@ -100,7 +100,7 @@ function Triggers() {
           </div>
 
           {/* validation */}
-          <div style={{ border: `1px solid ${V.greyXLight}`, borderRadius: 8, padding: '16px 18px', background: '#fff', boxShadow: V.shadow2 }}>
+          <div style={{ border: `1px solid ${V.greyXLight}`, borderRadius: 8, padding: '16px 18px', background: V.white, boxShadow: V.shadow2 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 9, marginBottom: 12 }}>
               <Icon name="check2" size={16} color={V.greenDeep} strokeWidth={1.9} />
               <h3 style={{ fontSize: 15, fontWeight: 700, color: V.black, margin: 0 }}>Threshold validation</h3>
@@ -115,7 +115,7 @@ function Triggers() {
               ))}
             </div>
             <div style={{ marginTop: 14, padding: '11px 13px', background: V.redLight, borderRadius: 6, fontSize: 12.5, color: '#9B2C2C', lineHeight: '18px' }}>
-              <strong>Immediate flags regardless of threshold:</strong> Clearwater Ventures &amp; Ironvale Technologies (zero activity all 5 months); Kingfisher Networks (128 → 12, a 90%+ drop).
+              <strong>Immediate flags regardless of threshold:</strong> Copperline Retail &amp; Tradewinds Co (zero activity all 5 months); Union Square Co (110 → 9, a 90%+ drop).
             </div>
           </div>
 
@@ -123,12 +123,12 @@ function Triggers() {
           <div style={{ border: `1px solid ${V.greyXLight}`, borderRadius: 8, padding: '16px 18px', background: V.greyBg }}>
             <div style={{ fontSize: 11, fontWeight: 700, color: V.greyMed, textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: 10 }}>Still open</div>
             {[
-              'All thresholds are proposed — finalize after the full baseline analysis and sign-off from Reese (senior CSM validator).',
-              'Login-activity data source is TBD pending the engineering team.',
-              'Six more triggers (failed-usage spike, usage-time degradation, support-ticket volume & silence, premium module decline, Needs-Review flags) are scoped in the Playbooks library for later phases.',
+              'The 30% MoM threshold is confirmed but still being validated against real usage data — may be tuned per segment once that\'s in.',
+              'Active-user data source is TBD pending the engineering team.',
+              'More triggers (onboarding stall, feature-adoption gaps, support-ticket volume & silence, renewal risk, NPS/sentiment decline) are scoped in the Playbooks library for later phases.',
             ].map((t, i) => (
               <div key={i} style={{ display: 'flex', gap: 11, alignItems: 'flex-start', padding: '7px 0' }}>
-                <span style={{ width: 16, height: 16, borderRadius: 4, border: `1.5px solid ${V.greyLight}`, flexShrink: 0, marginTop: 1, background: '#fff' }} />
+                <span style={{ width: 16, height: 16, borderRadius: 4, border: `1.5px solid ${V.greyLight}`, flexShrink: 0, marginTop: 1, background: V.white }} />
                 <span style={{ fontSize: 13, color: V.greyDark, lineHeight: '18px' }}>{t}</span>
               </div>
             ))}

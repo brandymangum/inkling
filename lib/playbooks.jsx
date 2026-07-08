@@ -57,7 +57,7 @@ function PlaybookDetail({ pb, trigger }) {
     <div style={{ maxWidth: 760 }}>
       {/* header */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10, flexWrap: 'wrap' }}>
-        <span style={{ fontSize: 12, fontWeight: 700, color: '#fff', background: V.greenDeep, padding: '3px 9px', borderRadius: 4, letterSpacing: '0.02em' }}>Playbook {pb.code}</span>
+        <span style={{ fontSize: 12, fontWeight: 700, color: V.onAccent, background: V.greenDeep, padding: '3px 9px', borderRadius: 4, letterSpacing: '0.02em' }}>Playbook {pb.code}</span>
         <Chip tone={KIND_TONE[pb.kind] || 'grey'}>{pb.kind}</Chip>
         <span style={{ fontSize: 12, color: V.greyMed }}>Trigger {trigger.num} · {trigger.name}</span>
       </div>
@@ -91,10 +91,10 @@ function PlaybookDetail({ pb, trigger }) {
 
       {/* SLA cadence */}
       <PBSectionLabel icon="clock">Response cadence &amp; SLA</PBSectionLabel>
-      <div style={{ border: `1px solid ${V.greyXLight}`, borderRadius: 8, overflow: 'hidden', marginBottom: 24, background: '#fff' }}>
+      <div style={{ border: `1px solid ${V.greyXLight}`, borderRadius: 8, overflow: 'hidden', marginBottom: 24, background: V.white }}>
         {pb.sla.map((s, i) =>
         <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '11px 15px', borderBottom: i === pb.sla.length - 1 ? 'none' : `1px solid ${V.greyXLight}` }}>
-            <span style={{ flexShrink: 0, width: 22, height: 22, borderRadius: '50%', background: V.black, color: '#fff', fontSize: 12, fontWeight: 700, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>{i + 1}</span>
+            <span style={{ flexShrink: 0, width: 22, height: 22, borderRadius: '50%', background: V.inkBar, color: V.onAccent, fontSize: 12, fontWeight: 700, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>{i + 1}</span>
             <span style={{ fontSize: 13.5, color: V.greyDark }}>{s}</span>
           </div>
         )}
@@ -110,9 +110,9 @@ function PlaybookDetail({ pb, trigger }) {
           </div>
         </div> :
 
-      <div style={{ border: `1px solid ${V.greyXLight}`, borderRadius: 8, padding: '14px 16px', marginBottom: 24, background: '#fff' }}>
+      <div style={{ border: `1px solid ${V.greyXLight}`, borderRadius: 8, padding: '14px 16px', marginBottom: 24, background: V.white }}>
           <div style={{ fontSize: 13.5, color: V.black, fontWeight: 600, marginBottom: 6 }}>{pb.response}</div>
-          <div style={{ fontSize: 12.5, color: V.greyMed, lineHeight: '18px' }}>Full warm / direct / first-touch (uncovered) email templates are documented in the V1 framework. The three Usage Activity playbooks (1A / 1B / 1C) carry the complete verbatim copy.</div>
+          <div style={{ fontSize: 12.5, color: V.greyMed, lineHeight: '18px' }}>Full warm / direct / first-touch (uncovered) email templates are documented in the V1 framework. The three Product Usage playbooks (1A / 1B / 1C) carry the complete verbatim copy.</div>
         </div>
       }
 
@@ -147,7 +147,7 @@ function Playbooks() {
 
   return (
     <main style={{ flex: 1, display: 'flex', flexDirection: 'column', background: 'transparent', overflow: 'hidden', minWidth: 0 }}>
-      <header style={{ padding: '18px 32px 16px', background: '#fff', borderBottom: `1px solid ${V.greyXLight}`, flexShrink: 0 }}>
+      <header style={{ padding: '18px 32px 16px', background: V.white, borderBottom: `1px solid ${V.greyXLight}`, flexShrink: 0 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10, fontSize: 12, color: V.greyMed }}>
           <span>Customer Success</span><Icon name="chevronRight" size={12} color={V.greyLight} /><span style={{ color: V.greyDark }}>Playbooks</span>
         </div>
@@ -165,7 +165,7 @@ function Playbooks() {
 
       <div style={{ flex: 1, display: 'flex', flexDirection: mobile ? 'column' : 'row', overflow: mobile ? 'auto' : 'hidden', minHeight: 0 }}>
         {/* nav rail */}
-        <nav style={{ width: mobile ? '100%' : 320, flexShrink: 0, background: '#fff', borderRight: mobile ? 'none' : `1px solid ${V.greyXLight}`, borderBottom: mobile ? `1px solid ${V.greyXLight}` : 'none', overflow: mobile ? 'visible' : 'auto', maxHeight: mobile ? 240 : 'none', overflowY: mobile ? 'auto' : 'auto' }}>
+        <nav style={{ width: mobile ? '100%' : 320, flexShrink: 0, background: V.white, borderRight: mobile ? 'none' : `1px solid ${V.greyXLight}`, borderBottom: mobile ? `1px solid ${V.greyXLight}` : 'none', overflow: mobile ? 'visible' : 'auto', maxHeight: mobile ? 240 : 'none', overflowY: mobile ? 'auto' : 'auto' }}>
           {triggers.map((t) =>
           <div key={t.num}>
               <div style={{ padding: '14px 16px 8px 20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>

@@ -1,13 +1,13 @@
-// Customer Health — Accounts directory (real SFDC roster view)
+// Customer Health — Accounts directory (real CRM roster view)
 // Loaded as <script type="text/babel" src="lib/accounts.jsx">
 
 function ArrBar({ c }) {
   const parts = [
-    { label: 'Software', val: c.software, color: V.green },
-    { label: 'Monitoring', val: c.monitoring, color: V.purple },
-    { label: 'Premium Services', val: c.cvo, color: V.blue },
-    { label: 'Licensing', val: c.licensing, color: V.orange },
-    { label: 'Enrollment', val: c.enrollment, color: V.greyMed },
+    { label: 'Core Platform', val: c.software, color: V.green },
+    { label: 'Analytics', val: c.monitoring, color: V.purple },
+    { label: 'Managed Services', val: c.cvo, color: V.blue },
+    { label: 'Add-ons', val: c.licensing, color: V.orange },
+    { label: 'Integrations', val: c.enrollment, color: V.greyMed },
   ].filter((p) => p.val > 0);
   const total = parts.reduce((a, p) => a + p.val, 0) || 1;
   return (
@@ -27,7 +27,7 @@ function AcctStatusPill({ status }) {
 }
 
 function SfHealthDot({ h }) {
-  const dot = { Green: '#35BC98', Yellow: '#E6B800', Red: '#EB5757', '—': '#C6C9CE' }[h] || '#C6C9CE';
+  const dot = { Green: '#5F7D5A', Yellow: '#B08A38', Red: '#A9493F', '—': '#D8D3C7' }[h] || '#D8D3C7';
   return (
     <span style={{ display: 'inline-flex', alignItems: 'center', gap: 7, fontSize: 13, color: V.greyDark }}>
       <span style={{ width: 9, height: 9, borderRadius: '50%', background: dot }} />
@@ -77,7 +77,7 @@ function Accounts({ onSelect }) {
 
   return (
     <main style={{ flex: 1, display: 'flex', flexDirection: 'column', background: 'transparent', overflow: 'hidden', minWidth: 0 }}>
-      <header style={{ padding: '18px 32px 16px', background: '#fff', borderBottom: `1px solid ${V.greyXLight}`, flexShrink: 0 }}>
+      <header style={{ padding: '18px 32px 16px', background: V.white, borderBottom: `1px solid ${V.greyXLight}`, flexShrink: 0 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10, fontSize: 12, color: V.greyMed }}>
           <span>Customer Success</span><Icon name="chevronRight" size={12} color={V.greyLight} /><span style={{ color: V.greyDark }}>Accounts</span>
         </div>
@@ -86,7 +86,7 @@ function Accounts({ onSelect }) {
             <h2 style={{ fontSize: 26, fontWeight: 700, color: V.black, margin: 0, letterSpacing: '-0.02em' }}>Accounts</h2>
             <div style={{ fontSize: 13.5, color: V.greyDark, marginTop: 7 }}>The full customer book — the system-of-record view from the CS Customer Report.</div>
           </div>
-          <Chip tone="grey" icon="briefcase">Owner · Jordan Blake</Chip>
+          <Chip tone="grey" icon="briefcase">All owners</Chip>
         </div>
       </header>
 
@@ -96,26 +96,26 @@ function Accounts({ onSelect }) {
           <AcctKpi label="All accounts" value={all.length} sub={`${H.fmtMoney(totalArr)} total ARR`} active={filter === 'all'} onClick={() => setFilter('all')} />
           <AcctKpi label="Launched" value={byStatus('Launched')} sub="In production" active={filter === 'launched'} onClick={() => tog('launched')} />
           <AcctKpi label="Implementing" value={byStatus('Implementing')} sub="Onboarding" active={filter === 'implementing'} onClick={() => tog('implementing')} />
-          <AcctKpi label="SF Red" value={bySf('Red')} sub="Flagged in Salesforce" tone="red" active={filter === 'red'} onClick={() => tog('red')} />
+          <AcctKpi label="CRM Red" value={bySf('Red')} sub="Flagged in CRM" tone="red" active={filter === 'red'} onClick={() => tog('red')} />
           <AcctKpi label="Uncovered" value={uncovered} sub="No assigned CSM" tone="red" active={filter === 'uncovered'} onClick={() => tog('uncovered')} />
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12, gap: 12, flexWrap: 'wrap' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6, height: 32, padding: '0 10px', background: '#fff', border: `1px solid ${V.greyLight}`, borderRadius: 4, width: 220 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, height: 32, padding: '0 10px', background: V.white, border: `1px solid ${V.greyLight}`, borderRadius: 4, width: 220 }}>
             <Icon name="search" size={14} color={V.greyMed} />
             <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search accounts" style={{ border: 0, outline: 'none', flex: 1, fontSize: 13, fontFamily: V.font, color: V.black, background: 'transparent' }} />
           </div>
-          <span style={{ fontSize: 12.5, color: V.greyMed }}>SF Health is from Salesforce; Signal is what our triggers compute — when they disagree, that's the catch.</span>
+          <span style={{ fontSize: 12.5, color: V.greyMed }}>CRM Health is from CRM; Signal is what our triggers compute — when they disagree, that's the catch.</span>
         </div>
 
-        <div style={{ border: `1px solid ${V.greyXLight}`, borderRadius: 8, overflow: 'hidden', background: '#fff', boxShadow: V.shadow2 }}>
+        <div style={{ border: `1px solid ${V.greyXLight}`, borderRadius: 8, overflow: 'hidden', background: V.white, boxShadow: V.shadow2 }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: V.font, fontVariantNumeric: 'tabular-nums' }}>
             <thead>
               <tr>
                 <AcctTh sortable active={sortKey === 'name'} dir={dir} onClick={() => setSort('name')}>Account</AcctTh>
                 <AcctTh sortable active={sortKey === 'platform'} dir={dir} onClick={() => setSort('platform')} width={92}>Platform</AcctTh>
                 <AcctTh sortable active={sortKey === 'status'} dir={dir} onClick={() => setSort('status')} width={110}>Status</AcctTh>
-                <AcctTh sortable active={sortKey === 'sf'} dir={dir} onClick={() => setSort('sf')} width={104}>SF Health</AcctTh>
+                <AcctTh sortable active={sortKey === 'sf'} dir={dir} onClick={() => setSort('sf')} width={104}>CRM Health</AcctTh>
                 <AcctTh sortable active={sortKey === 'signal'} dir={dir} onClick={() => setSort('signal')} width={104}>Signal</AcctTh>
                 <AcctTh sortable active={sortKey === 'arr'} dir={dir} onClick={() => setSort('arr')} align="right" width={150}>ARR</AcctTh>
                 <AcctTh sortable active={sortKey === 'renewal'} dir={dir} onClick={() => setSort('renewal')} width={116}>Renewal</AcctTh>
@@ -136,7 +136,7 @@ function AcctRow({ c, td, onSelect, H }) {
   const [hover, setHover] = React.useState(false);
   const near = c.renewalDays <= 60;
   return (
-    <tr onClick={() => onSelect(c)} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} style={{ background: hover ? V.greyBgLight : '#fff', cursor: 'pointer' }}>
+    <tr onClick={() => onSelect(c)} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} style={{ background: hover ? V.greyBgLight : V.white, cursor: 'pointer' }}>
       <td style={td}>
         <div style={{ fontSize: 14, fontWeight: 600, color: V.black, lineHeight: 1.2 }}>{c.name}</div>
         <div style={{ fontSize: 12, color: V.greyMed, marginTop: 2 }}>{c.segment}</div>
@@ -165,7 +165,7 @@ function AcctKpi({ label, value, sub, tone, active, onClick }) {
   const accent = tone === 'red' ? V.red : V.greyDark;
   return (
     <div onClick={onClick} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
-      style={{ flex: 1, minWidth: 150, background: '#fff', border: `1px solid ${active ? accent : V.greyXLight}`, outline: active ? `1px solid ${accent}` : 'none', borderRadius: 8, padding: '14px 18px', boxShadow: (hover && onClick) ? V.shadow3 : V.shadow2, cursor: onClick ? 'pointer' : 'default', transition: 'box-shadow 120ms' }}>
+      style={{ flex: 1, minWidth: 150, background: V.white, border: `1px solid ${active ? accent : V.greyXLight}`, outline: active ? `1px solid ${accent}` : 'none', borderRadius: 8, padding: '14px 18px', boxShadow: (hover && onClick) ? V.shadow3 : V.shadow2, cursor: onClick ? 'pointer' : 'default', transition: 'box-shadow 120ms' }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <span style={{ fontSize: 12, fontWeight: 600, color: V.greyDark }}>{label}</span>
         {onClick && <Icon name="filter" size={11} color={active ? accent : V.greyLight} />}
