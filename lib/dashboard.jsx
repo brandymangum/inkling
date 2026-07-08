@@ -827,7 +827,7 @@ function EscalateModal({ rollup, onClose, onPing }) {
 
           <div style={{ fontSize: 11, fontWeight: 700, color: V.greyMed, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 8 }}>Send to</div>
           <div style={{ display: 'flex', gap: 8, marginBottom: 18 }}>
-            {[['slack', 'slack', '#cs-alerts'], ['mail', 'mail', `${rollup.csm.split(' ')[0].toLowerCase()}@vela.com`]].map(([k, ic, detail]) => (
+            {[['slack', 'slack', '#cs-alerts'], ['mail', 'mail', `${rollup.csm.split(' ')[0].toLowerCase()}@inkling.com`]].map(([k, ic, detail]) => (
               <button key={k} onClick={() => setChannel(k)} style={{
                 flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, padding: '10px 8px', borderRadius: 8, cursor: 'pointer', fontFamily: V.font,
                 border: `1.5px solid ${channel === k ? V.green : V.greyLight}`, background: channel === k ? V.greenLight : V.white,

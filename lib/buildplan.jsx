@@ -242,7 +242,7 @@ function BuildPlan() {
               <div style={{ fontSize: 13, fontWeight: 700, color: V.black, marginBottom: 10 }}>The dashboard</div>
               <ul style={{ margin: 0, paddingLeft: 20, fontSize: 13, color: V.greyDark, lineHeight: '22px' }}>
                 <li>Customer Health view — live from a data feed (account roster + health rating), Risk-by-tier table, sortable Renewals.</li>
-                <li>Account detail — DEAR health score, contract/utilization view, and a <strong>Customer Log</strong> tab (AI account summary, open to-dos from calls, collapsible call history, CSM "Mark OK" override, Snooze 30d) — currently seeded with mock history per account.</li>
+                <li>Account detail — a customer health score, contract/utilization view, and a <strong>Customer Log</strong> tab (AI account summary, open to-dos from calls, collapsible call history, CSM "Mark OK" override, Snooze 30d) — currently seeded with mock history per account.</li>
                 <li>Leadership Overview — three tabs: <strong>CSM Summary</strong> (per-CSM rollup, click-to-drill-down on red/watch/no-touch), <strong>Accounts</strong> (Needs Attention vs. Watch, split by the two core triggers), and <strong>Risk &amp; Revenue</strong> (renewals at risk, program impact, risk by segment).</li>
                 <li>Role-based views — a "View as" toggle hides Leadership nav + Configure Alerts for the CSM role (today this is a UI toggle, not real auth — see SSO below).</li>
                 <li>Trigger Settings — live-adjustable Decline/Watch thresholds, a read-only log of the active triggers, and a "Test alerts" tool.</li>
@@ -377,7 +377,7 @@ function BuildPlan() {
                 area: 'Triggers',
                 rows: [
                   ['Focused the POC on 2 core triggers', 'Kept the POC focused on the two highest-confidence signals (Product Usage Stall, Low Usage Across Contract) rather than diluting attention across many. The rest are scoped in the Playbooks library for later phases.', null],
-                  ['30% month-over-month drop as the Low Usage threshold', 'One number to reason about across the dashboard. Adjustable live via Trigger Settings.', 'Validate against real usage data once step 2 is live — 30% may need tuning per segment.'],
+                  ['20% month-over-month drop as the Low Usage threshold', 'One number to reason about across the dashboard. Adjustable live via Trigger Settings.', 'Validate against real usage data once step 2 is live — 30% may need tuning per segment.'],
                   ['Active users as a fallback signal for early-contract accounts', 'Seat utilization can look artificially low for customers still ramping up, which would false-flag healthy new accounts. Login / active-user volume doesn’t have that early-contract distortion.', 'Needs the same live-data wiring as usage volume (step 2).'],
                 ],
               },
@@ -532,7 +532,7 @@ function BuildPlan() {
                 </thead>
                 <tbody>
                   {[
-                    ['Account', 'Same account name/ID used in the roster feed, so rows join cleanly.', 'Northgate Systems'],
+                    ['Account', 'Same account name/ID used in the roster feed, so rows join cleanly.', 'Lorem Ipsum'],
                     ['Month', 'Calendar month the row covers.', '2026-05'],
                     ['Logins', 'Total logins / sessions for the month.', '4,210'],
                     ['Active users', 'Unique active users for the month — the fallback signal for early-contract accounts.', '18'],
@@ -577,7 +577,7 @@ function BuildPlan() {
                 </StageCol>
                 <Arrow label="event" />
                 <StageCol label="Detection">
-                  <Node icon="zap" title="Threshold check" sub="±30% MoM + cumulative" />
+                  <Node icon="zap" title="Threshold check" sub="±20% MoM + cumulative" />
                   <Node icon="server" title="Queue → delivery" sub="reused sync path" />
                 </StageCol>
                 <Arrow label="fan-out" />
@@ -637,7 +637,7 @@ function BuildPlan() {
                     'Can we add a rollup asset to the existing pipeline, or extend one?',
                     'Confirm reuse of the existing queue → CRM path, and add chat + email as fan-out targets.',
                     'Which CRM object / field for CSM tasks, and assignment rules for uncovered accounts?',
-                    'Lock final thresholds after baseline (30% MoM + a cumulative-decline trigger).',
+                    'Lock final thresholds after baseline (20% MoM + a cumulative-decline trigger).',
                     'Does any other team’s expansion-signal project overlap — can we share the pipeline?',
                   ].map((q, i) => (
                     <div key={i} style={{ display: 'flex', gap: 11, alignItems: 'flex-start', padding: '9px 0', borderBottom: i === 6 ? 'none' : `1px solid ${V.greyXLight}` }}>

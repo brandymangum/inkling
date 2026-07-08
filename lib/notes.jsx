@@ -21,17 +21,17 @@ let DRAGGING_TASK = null; // fallback for environments where DataTransfer custom
 
 function seedTasks() {
   return [
-    { id: nUid(), cadence: 'daily', text: 'Reach out to Union Square Co — logins down 92% since Jan', done: false },
-    { id: nUid(), cadence: 'daily', text: 'Re-onboard Tradewinds Co (stalled, logins fading)', done: false },
+    { id: nUid(), cadence: 'daily', text: 'Reach out to Laborum Co — logins down 92% since Jan', done: false },
+    { id: nUid(), cadence: 'daily', text: 'Re-onboard Laboris Co (stalled, logins fading)', done: false },
     { id: nUid(), cadence: 'daily', text: 'Clear the "Needs attention" worklist to zero', done: false },
-    { id: nUid(), cadence: 'weekly', text: 'Expansion call: Lakeside Group — sustained 30%+ growth', done: false },
+    { id: nUid(), cadence: 'weekly', text: 'Expansion call: Excepteur Co — sustained 20%+ growth', done: false },
     { id: nUid(), cadence: 'weekly', text: 'Review every account that crossed a threshold this week', done: false },
     { id: nUid(), cadence: 'weekly', text: 'Log all outreach in CRM before Friday', done: false },
     { id: nUid(), cadence: 'monthly', text: 'Pull login + active-user trends for the full segment', done: false },
     { id: nUid(), cadence: 'monthly', text: 'Refresh health scores and re-rank at-risk accounts', done: false },
     { id: nUid(), cadence: 'monthly', text: 'Sync with Finance on expansion-signal overlap', done: false },
     { id: nUid(), cadence: 'quarterly', text: 'Run QBRs for Green accounts renewing next quarter', done: false },
-    { id: nUid(), cadence: 'quarterly', text: 'Re-validate the 30% thresholds against real usage data', done: false },
+    { id: nUid(), cadence: 'quarterly', text: 'Re-validate the 20% thresholds against real usage data', done: false },
     { id: nUid(), cadence: 'quarterly', text: 'Segment review with Jordan — wins, risks, expansion', done: false },
   ];
 }
@@ -365,7 +365,7 @@ function NotesTasks({ onSelect }) {
   const H = window.HEALTH;
   const [tasks, setTasks] = React.useState(() => nGet('cc_tasks_v2', seedTasks()));
   const [notes, setNotes] = React.useState(() => nGet('cc_team_notes', [
-    { id: nUid(), text: 'Jordan confirmed the two core triggers; thresholds confirmed at 30% MoM, validating against real data.', ts: Date.now() - 86400000 * 2 },
+    { id: nUid(), text: 'Jordan confirmed the two core triggers; thresholds confirmed at 20% MoM, validating against real data.', ts: Date.now() - 86400000 * 2 },
   ]));
   const [noteInput, setNoteInput] = React.useState('');
   const [cheer, setCheer] = React.useState(null);
@@ -477,7 +477,7 @@ function NotesTasks({ onSelect }) {
         <div style={{ display: 'flex', gap: 16, marginBottom: 20, alignItems: 'stretch', flexWrap: 'wrap' }}>
           <div style={{ flex: 1, minWidth: 240, display: 'flex', flexDirection: 'column', gap: 12, padding: '18px 20px', borderRadius: 10, background: V.greenLight, border: `1px solid #C9DCC2` }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-              <span style={{ flexShrink: 0, width: 38, height: 38, borderRadius: '50%', background: V.greyBg, border: `1px solid ${V.greyXLight}`, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}><VelaMark size={19} /></span>
+              <span style={{ flexShrink: 0, width: 38, height: 38, borderRadius: '50%', background: V.greyBg, border: `1px solid ${V.greyXLight}`, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}><InklingMark size={19} /></span>
               <div style={{ minWidth: 0 }}>
                 <div style={{ fontSize: 15, fontWeight: 700, color: '#3E5A39' }}>{greeting}, Riley.</div>
                 <div style={{ fontSize: 13, color: V.greenDeep, marginTop: 2 }}>{doneCount > 0 ? `${doneCount} done — ${zinger}` : 'A fresh worklist. Let’s make today count.'}</div>

@@ -19,8 +19,8 @@ function playbookFor(c) {
       sla: 'Outreach within 2 business days',
       email: {
         tag: 'Option C — First outreach (uncovered account)',
-        subject: 'Checking in on your Vela usage',
-        body: `Hi [First name], I'm Riley on our Customer Success team — I'll be your point of contact going forward.\n\nI noticed your team's product usage has dropped over the last couple of months. I wanted to reach out directly rather than wait: is there a workflow change, a staffing shift, or something on our end getting in the way?\n\nHappy to find 15 minutes this week to make sure Vela is pulling its weight for you.`,
+        subject: 'Checking in on your Inkling usage',
+        body: `Hi [First name], I'm Riley on our Customer Success team — I'll be your point of contact going forward.\n\nI noticed your team's product usage has dropped over the last couple of months. I wanted to reach out directly rather than wait: is there a workflow change, a staffing shift, or something on our end getting in the way?\n\nHappy to find 15 minutes this week to make sure Inkling is pulling its weight for you.`,
       },
     },
     stall: {
@@ -29,7 +29,7 @@ function playbookFor(c) {
       sla: 'Outreach within 1 business day',
       email: {
         tag: 'Option C — First outreach (uncovered account)',
-        subject: 'Getting your Vela account off the ground',
+        subject: 'Getting your Inkling account off the ground',
         body: `Hi [First name], I'm Riley from our Customer Success team.\n\nI'm reaching out because it looks like your team hasn't logged in yet. I'd love to help you get your users onboarded — most teams are up and running after one short working session.\n\nWould a 20-minute setup call this week work? I can walk through the first steps with you live.`,
       },
     },
@@ -50,7 +50,7 @@ function playbookFor(c) {
       email: {
         tag: 'Option C — First outreach (uncovered account)',
         subject: 'Your usage volume is growing fast',
-        body: `Hi [First name], I'm Riley from our Customer Success team.\n\nYour login volume has grown significantly over the past few months — great to see. I wanted to make sure your current plan keeps pace and that you're not bumping into any limits as you scale.\n\nCould we grab 15 minutes to look at where you're headed? I want to make sure Vela grows with you.`,
+        body: `Hi [First name], I'm Riley from our Customer Success team.\n\nYour login volume has grown significantly over the past few months — great to see. I wanted to make sure your current plan keeps pace and that you're not bumping into any limits as you scale.\n\nCould we grab 15 minutes to look at where you're headed? I want to make sure Inkling grows with you.`,
       },
     },
   };
@@ -300,7 +300,7 @@ function CustomerDetail({ c, onClose }) {
             </StatBlock>
             <StatBlock label="CRM Health">{c.sfHealth === '—' ? '—' : c.sfHealth}</StatBlock>
             <StatBlock label="Open tickets" sub="Help desk">{c.tickets}</StatBlock>
-            <StatBlock label="Platform">{c.platform}</StatBlock>
+            <StatBlock label="Customer since">{c.won ? H.fmtRenewal(c.won) : '—'}</StatBlock>
           </div>
         </div>
 
@@ -555,7 +555,7 @@ function CategoryBlock({ cat, first }) {
   return (
     <div style={{ borderTop: first ? 'none' : `1px solid ${V.greyXLight}` }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '11px 16px', background: V.greyBg }}>
-        <span style={{ flexShrink: 0, width: 26, height: 26, borderRadius: 6, background: bg, color: col, fontSize: 13, fontWeight: 700, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>{cat.letter}</span>
+        <span style={{ flexShrink: 0, width: 12, height: 12, borderRadius: '50%', background: col }}></span>
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ fontSize: 13.5, fontWeight: 700, color: V.black }}>{cat.name}</div>
           <div style={{ fontSize: 11.5, color: V.greyMed, marginTop: 1 }}>{cat.desc}</div>
@@ -586,10 +586,7 @@ function HealthScore({ c }) {
   return (
     <div style={{ marginBottom: 24 }}>
       <SubHead icon="heart">Customer health score</SubHead>
-      <div style={{ marginTop: -8, marginBottom: 12, display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-        <Chip tone="purple">Weighted scorecard</Chip>
-        <span style={{ fontSize: 11.5, color: V.greyMed }}>Deployment · Engagement · Adoption · ROI</span>
-      </div>
+      <div style={{ marginTop: -8, marginBottom: 12, fontSize: 11.5, color: V.greyMed }}>A weighted score across usage, engagement, and realized value.</div>
       <div style={{ border: `1px solid ${V.greyXLight}`, borderRadius: 8, overflow: 'hidden', background: V.white }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 18, padding: '16px 18px', background: V.greyBg, borderBottom: `1px solid ${V.greyXLight}` }}>
           <Gauge score={h.score} color={b.track} />
@@ -599,7 +596,7 @@ function HealthScore({ c }) {
               <span style={{ fontSize: 14, color: V.greyMed, fontWeight: 500 }}>/ 100</span>
               <span style={{ marginLeft: 4, padding: '3px 10px', borderRadius: 64, background: b.bg, color: b.color, fontSize: 12, fontWeight: 600 }}>{b.label}</span>
             </div>
-            <div style={{ fontSize: 12.5, color: V.greyMed, marginTop: 7, lineHeight: '17px' }}>Built from four categories — onboarding setup, engagement with CS/support, product usage, and value realized vs. spend. Each is scored green / yellow / red and weighted into the overall score.</div>
+            <div style={{ fontSize: 12.5, color: V.greyMed, marginTop: 7, lineHeight: '17px' }}>Built from three signals — how usage is trending, how engaged the account is, and how much of the contract they actually use. Each is scored green / yellow / red and weighted into the overall score.</div>
           </div>
         </div>
         {h.categories.map((cat, i) => <CategoryBlock key={cat.key} cat={cat} first={i === 0} />)}
@@ -648,7 +645,7 @@ function seedLogFor(c) {
       {
         id: 'seed1', ts: base - 86400000 * 30, type: 'call', by: csmFirst, source: 'Notes',
         summary: 'Quarterly check-in — steady usage, no concerns raised. Confirmed renewal expectations and current champion.',
-        fullNotes: `Walked through usage trends (steady, in line with contract). No open issues. Champion confirmed as primary contact through renewal. Mentioned interest in exploring additional ${c.platform === 'OEM' ? 'OEM' : 'platform'} workflows next quarter — flagged as a soft expansion signal for ${csmFirst} to revisit closer to renewal.`,
+        fullNotes: `Walked through usage trends (steady, in line with contract). No open issues. Champion confirmed as primary contact through renewal. Mentioned interest in exploring additional platform workflows next quarter — flagged as a soft expansion signal for ${csmFirst} to revisit closer to renewal.`,
         commitment: true, done: true,
       },
     ];

@@ -40,10 +40,10 @@ function TriggerCard({ num, name, status, statusTone, watch, rules, dataSource, 
 
 function Triggers() {
   const valid = [
-    ['Would have caught Oakmont Solutions’ May drop (\u221235%)', 'green'],
-    ['Would have caught Everline Systems’ multi-month decline', 'green'],
-    ['Would have caught Union Square Co early \u2014 before it reached a 90% drop', 'green'],
-    ['No false positives for growing accounts (Apex Retail Group, Lakeside Group)', 'green'],
+    ['Would have caught Proident Group’ May drop (\u221235%)', 'green'],
+    ['Would have caught Consequat Group’ multi-month decline', 'green'],
+    ['Would have caught Laborum Co early \u2014 before it reached a 90% drop', 'green'],
+    ['No false positives for growing accounts (Adipiscing Group, Excepteur Co)', 'green'],
   ];
   return (
     <main style={{ flex: 1, display: 'flex', flexDirection: 'column', background: 'transparent', overflow: 'hidden', minWidth: 0 }}>
@@ -73,10 +73,10 @@ function Triggers() {
               { tone: 'red', label: 'Decline', rule: 'Current month is 30% or more below the previous month — early-warning alert.' },
               { tone: 'red', label: 'Stall', rule: 'Zero usage for 30 or more consecutive days — urgent alert.' },
               { tone: 'purple', label: 'Upsell', rule: 'Current month is 30% or more above the previous month — expansion signal.' },
-              { tone: 'orange', label: 'Cumulative', rule: 'Down 30% or more from the highest point in the last 3 months — catches slow slides (the Union Square Co case) that never trip a single-month alert.' },
+              { tone: 'orange', label: 'Cumulative', rule: 'Down 30% or more from the highest point in the last 3 months — catches slow slides (the Laborum Co case) that never trip a single-month alert.' },
             ]}
             dataSource="product_events · session_started_at, user_id, account"
-            note="Cumulative-decline rule added after Union Square Co slid from 110 to 9 without any single month crossing 30%."
+            note="Cumulative-decline rule added after Laborum Co slid from 110 to 9 without any single month crossing 30%."
           />
 
           <TriggerCard
@@ -115,7 +115,7 @@ function Triggers() {
               ))}
             </div>
             <div style={{ marginTop: 14, padding: '11px 13px', background: V.redLight, borderRadius: 6, fontSize: 12.5, color: '#9B2C2C', lineHeight: '18px' }}>
-              <strong>Immediate flags regardless of threshold:</strong> Copperline Retail &amp; Tradewinds Co (zero activity all 5 months); Union Square Co (110 → 9, a 90%+ drop).
+              <strong>Immediate flags regardless of threshold:</strong> Ullamco Labs &amp; Laboris Co (zero activity all 5 months); Laborum Co (110 → 9, a 90%+ drop).
             </div>
           </div>
 

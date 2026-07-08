@@ -1,4 +1,4 @@
-// Customer Health — shared components (forked from Vela customer-success kit)
+// Customer Health — shared components (forked from Inkling customer-success kit)
 // Loaded as <script type="text/babel" src="lib/components.jsx">
 
 // Inkling ships a single considered look — the "ink on paper" palette below.
@@ -88,7 +88,7 @@ function Icon({ name, size = 16, color = 'currentColor', strokeWidth = 1.75, sty
   );
 }
 
-function VelaMark({ size = 24 }) {
+function InklingMark({ size = 24 }) {
   return (
     <svg width={size * 72 / 64} height={size} viewBox="0 0 72 64" fill="none">
       <path d="M 8 40 C 14 24 20 24 24 34 C 27 41 31 41 34 32 C 37 24 43 24 46 32" stroke="#141414" strokeWidth="4" strokeLinecap="round" fill="none" />
@@ -352,4 +352,4 @@ function useMobile(bp) {
   return m;
 }
 
-Object.assign(window, { V, Icon, VelaMark, Button, StatusPill, Chip, Delta, LastTouch, OutreachStatus, SampleBadge, OverrideCtx, useOverrides, isMuted, FilterMenu, MultiSelectMenu, SfdcLink, useMobile, TweakCtx, useTweakCtx, densityOf });
+Object.assign(window, { V, Icon, InklingMark, Button, StatusPill, Chip, Delta, LastTouch, OutreachStatus, SampleBadge, OverrideCtx, useOverrides, isMuted, FilterMenu, MultiSelectMenu, SfdcLink, useMobile, TweakCtx, useTweakCtx, densityOf });

@@ -1,10 +1,10 @@
 /* ============================================================
-   Vela Design System — Colors & Type
-   Source of truth: Figma "Vela Design Library" → Foundation
+   Inkling Design System — Colors & Type
+   Source of truth: Figma "Inkling Design Library" → Foundation
    ============================================================ */
 
 /* ---------- Fonts ----------
-   Vela uses SF Pro Display as the default type family across all
+   Inkling uses SF Pro Display as the default type family across all
    components and text styles. SF Pro is Apple's system font, rendered
    natively on macOS/iOS via -apple-system / BlinkMacSystemFont. On
    non-Apple platforms we fall back to the OS system UI font (Segoe UI

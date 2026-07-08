@@ -1,7 +1,7 @@
 // Customer Health — app shell + nav
 // Loaded last, after all component scripts.
 
-// ── Easter egg: tap the vela logo 5× quickly for a little brand-color
+// ── Easter egg: tap the inkling logo 5× quickly for a little brand-color
 // confetti burst + a quiet "you found it" toast. Discoverable, not in the way.
 let _brandTaps = 0, _brandTapTimer = null;
 function brandTap() {
@@ -172,7 +172,7 @@ function AppSidebar({ view, setView, flaggedCount, dataSource, role, setRole }) 
   return (
     <aside style={{ width: 248, flexShrink: 0, background: V.white, borderRight: `1px solid ${V.greyXLight}`, display: 'flex', flexDirection: 'column', fontFamily: V.font }}>
       <div onClick={() => { if (window.openSnakeGame) window.openSnakeGame(); }} title="" style={{ padding: '18px 20px 14px', display: 'flex', alignItems: 'center', gap: 9, cursor: 'pointer', userSelect: 'none' }}>
-        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}><VelaMark size={22} /><span style={{ fontFamily: V.font, fontWeight: 600, fontSize: 20, color: '#141414', letterSpacing: '-0.02em' }}>inkling</span></span>
+        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}><InklingMark size={22} /><span style={{ fontFamily: V.font, fontWeight: 600, fontSize: 20, color: '#141414', letterSpacing: '-0.02em' }}>inkling</span></span>
       </div>
       <UserMenu role={role} setRole={setRole} />
 
@@ -232,7 +232,7 @@ function MobileNav({ view, setView, flaggedCount, role, setRole }) {
     <header style={{ flexShrink: 0, background: V.white, borderBottom: `1px solid ${V.greyXLight}`, fontFamily: V.font, position: 'relative', zIndex: 30 }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '11px 14px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}><VelaMark size={18} /><span style={{ fontWeight: 600, fontSize: 18, color: '#141414', letterSpacing: '-0.02em' }}>inkling</span></span>
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}><InklingMark size={18} /><span style={{ fontWeight: 600, fontSize: 18, color: '#141414', letterSpacing: '-0.02em' }}>inkling</span></span>
         </div>
         <div style={{ position: 'relative', minWidth: 150 }}><UserMenu role={role} setRole={setRole} /></div>
       </div>
@@ -372,7 +372,7 @@ function Marquee() {
 }
 
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "declinePct": 30,
+  "declinePct": 20,
   "watchPct": 25,
   "density": "regular",
   "showSampleBadges": true
@@ -475,7 +475,7 @@ function App() {
     return () => { cancelled = true; document.removeEventListener('health:loaded', onLoaded); };
   }, []);
 
-  const nonDefault = t.declinePct !== 30 || t.watchPct !== 25;
+  const nonDefault = t.declinePct !== 20 || t.watchPct !== 25;
   const mobile = useIsMobile();
 
   return (
